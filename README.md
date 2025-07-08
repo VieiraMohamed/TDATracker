@@ -1,4 +1,12 @@
-# 🧠 TDAtracker
+# 🧠 TDAtracker 
+
+[👉 Visita la aplicación en línea](https://tdatracker.infy.uk/) 🚀
+
+## 🎥 Demo y funcionamiento
+
+Para ver cómo funciona TDAtracker, visita nuestra sección de videos y tutoriales aquí:
+
+[▶️ Ver videos de la app](https://tdatracker.infy.uk/Funciones/index.html)
 
 **TDAtracker** es una aplicación integral diseñada para personas con **TDA/TDAH** (Trastorno por Déficit de Atención con o sin Hiperactividad). Ayuda a organizar, concentrarse y mejorar el bienestar emocional a través de herramientas adaptadas, accesibles y atractivas.
 

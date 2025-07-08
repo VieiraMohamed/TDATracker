@@ -1,0 +1,87 @@
+<h4 class="text-center mb-4"><i class="fas fa-user me-2"></i>Registro Especialista/Tutor</h4>
+<form id="form-basico">
+    <!-- Fila para Nombre y Apellido -->
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="nombre2" class="form-label">Nombre</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input type="text" class="form-control" id="nombre2" placeholder="Ingrese su nombre" required>
+            </div>
+            <p id="nombre2-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+        <div class="col-md-6">
+            <label for="apellido2" class="form-label">Apellido</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                <input type="text" class="form-control" id="apellido2" placeholder="Ingrese su apellido" required>
+            </div>
+            <p id="apellido2-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="row g-3">
+        <div class="col-12">
+            <label for="email" class="form-label">Correo Electrónico</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                <input type="email" class="form-control" id="email2" placeholder="ejemplo@dominio.com" required>
+            </div>
+            <p id="email-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+    </div>
+
+    <!-- Confirmar contraseña -->
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="password" class="form-label">Contraseña</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <input type="password" class="form-control" id="password" placeholder="Mínimo 6 caracteres" required>
+            </div>
+            <p id="password-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+        <div class="col-md-6">
+            <label for="password-confirmar" class="form-label">Confirmar contraseña</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <input type="password" class="form-control" id="password-confirmar" placeholder="Mínimo 6 caracteres" required>
+            </div>
+            <p id="password-error-confirmar" class="text-danger small mt-1 mb-0"></p>
+        </div>
+    </div>
+
+    <!-- Fila para Género y Teléfono -->
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="genero2" class="form-label">Género</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+                <select class="form-select" id="genero2" required>
+                    <option value="" selected disabled>Seleccionar...</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <p id="genero2-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+        <div class="col-md-6">
+            <label for="telefono2" class="form-label">Teléfono</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                <input type="tel" class="form-control" id="telefono2" placeholder="9 dígitos" required>
+            </div>
+            <p id="telefono2-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 mt-4">
+        <i class="fas fa-paper-plane me-2"></i>Registrar
+    </button>
+
+    <div class="text-center mt-3">
+        <a href="../PHP/inicio_sesion.php">Iniciar Sesión</a>
+    </div>
+</form>

@@ -1,0 +1,155 @@
+/* Variables globales para el modo claro (por defecto) */
+:root {
+    --fondo: #f5ebe0;
+    --texto: #0d1b2a;
+    --navbar: #d6ccc2;
+    --boton-bg: #778da9;
+    --boton-borde: #415a77;
+    --boton-texto: #ffffff;
+}
+
+/* Modo Oscuro */
+.modo-oscuro {
+    --fondo: #0d1b2a;
+    --texto: #e0e1dd;
+    --navbar: #1b263b;
+    --boton-bg: #415a77;
+    --boton-borde: #1b263b;
+    --boton-texto: #ffffff;
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: var(--navbar);
+    position: relative;
+    padding: 15px;
+}
+
+.navbar a {
+    color: var(--texto) !important;
+}
+
+.navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(13,27,42, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Cambiar el color de la hamburguesa en modo oscuro */
+.modo-oscuro .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23e0e1dd' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Contenedor principal */
+.container {
+    margin-top: 5rem;
+    padding: 20px;
+}
+
+/* Estilo de los botones */
+.btn-custom {
+    background-color: var(--boton-bg);
+    border-color: var(--boton-borde);
+    color: var(--boton-texto);
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin: 5px;
+}
+
+.modo-switch {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Estilo para la marca del navbar */
+.navbar-brand {
+    margin-left: 46% !important;
+}
+
+/* Estilos para el calendario y el día seleccionado */
+.fc-day.selected {
+    background-color: var(--boton-bg) !important;
+}
+
+.fc-daygrid-day-number {
+    color: white !important;
+}
+
+.fc-day.fc-today {
+    background-color: #f0f0f0 !important;
+}
+
+.fc-event {
+    cursor: pointer;
+}
+
+/* Modal y otros componentes interactivos en modo oscuro */
+.modo-oscuro .modal-content {
+    background-color: #1b263b;
+    color: #e0e1dd;
+}
+
+.modo-oscuro .card {
+    background-color: #1b263b;
+    color: white;
+}
+
+.modo-oscuro .modal-header,
+.modo-oscuro .modal-footer {
+    border-color: #415a77;
+}
+
+.modo-oscuro .btn-close {
+    filter: invert(1);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modo-switch {
+        margin-bottom: 10px;
+    }
+
+    .btn-custom {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(13,27,42, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .modo-oscuro .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23e0e1dd' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .modo-oscuro .navbar-toggler {
+        border: 1px solid var(--texto);
+    }
+}
+
+/* Eliminar el subrayado de los enlaces */
+a {
+    color: var(--boton-bg);
+    text-decoration: none;
+}
+
+/* Quitar los bordes de enfoque/activo en los botones */
+.btn-custom:focus,
+.btn-custom:active {
+    outline: none;
+    box-shadow: none;
+    background-color: var(--boton-bg);
+    color: var(--boton-texto);
+    border-color: var(--boton-borde);
+}

@@ -1,0 +1,254 @@
+/* Modo Claro */
+:root {
+    --fondo: #f5ebe0;
+    --texto: #0d1b2a;
+    --navbar: #d6ccc2;
+    --boton-bg: #778da9;
+    --boton-borde: #415a77;
+    --boton-texto: #ffffff;
+}
+
+/* Modo Oscuro */
+.modo-oscuro {
+    --fondo: #0d1b2a;
+    --texto: #e0e1dd;
+    --navbar: #1b263b;
+    --boton-bg: #415a77;
+    --boton-borde: #1b263b;
+    --boton-texto: #ffffff;
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background-color: var(--navbar);
+}
+
+.navbar a {
+    color: var(--texto) !important;
+}
+
+.modo-switch {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.btn-custom {
+    background-color: var(--boton-bg);
+    border-color: var(--boton-borde);
+    color: var(--boton-texto);
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+/* logo TDATracker */
+.navbar-brand {
+    margin-left: 46% !important;
+}
+
+.container-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: start;
+}
+
+/* Contenedor de tareas */
+.tareas-lista {
+    max-height: 200px;
+    min-height: 200px;
+    overflow-y: auto;
+    background-color: var(--navbar);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tareas-lista div {
+    padding: 8px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--boton-borde);
+}
+
+.tareas-lista input {
+    margin-right: 5px;
+}
+
+.tarea-completada {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.musica-container {
+    margin-top: 50px;
+    text-align: center;
+    background-color: var(--navbar); 
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Recuadros adicionales */
+.recuadros-adicionales {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.recuadro {
+    width: 45%;
+    padding: 15px;
+    background-color: var(--navbar);
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el día seleccionado */
+.fc-day.selected {
+    background-color: var(--boton-bg) !important;
+}
+
+.fc-daygrid-day-number {
+    color: white !important;
+}
+
+/* Quitar el subrayado de los numero y letras del calendario */
+a {
+    color: var(--boton-bg);
+    text-decoration: none;
+}
+
+.fc-daygrid-day-number {
+    color: var(--texto) !important;
+}
+
+/* Estilo para el día actual */
+.fc-day.fc-today {
+    background-color: #f0f0f0 !important;
+}
+
+/* Estilo para cambiar el cursor cuando el ratón pasa sobre una nota */
+.fc-event {
+    cursor: pointer;
+}
+
+.container-layout {
+    display: block;
+    padding: 15px;
+}
+
+@media (min-width: 768px){
+    .container-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .calendar-container, .tareas-container {
+        padding: 15px;
+        margin-bottom: 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .modo-switch {
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    .btn-custom {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+
+    .container-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tareas-container {
+        height: auto;
+    }
+
+    .recuadros-adicionales {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recuadro {
+        width: 90%;
+        margin-bottom: 15px;
+    }
+
+    .navbar-brand {
+        font-size: 15px;
+        margin-left: 15% !important;
+    }
+
+    iframe {
+        width: 100%;
+    }
+
+    .navbar-toggler:focus,
+    .navbar-toggler:focus-visible,
+    .navbar-toggler:focus-within {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    /* Modo oscuro */
+    .modo-oscuro .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23e0e1dd' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    /* Borde en modo oscuro */
+    .modo-oscuro .navbar-toggler {
+        border: 1px solid var(--texto);
+    }
+}
+
+/* Modal en modo oscuro */
+.modo-oscuro .list-group-item{
+    background-color: #1b263b;
+    color: white;
+}
+
+.modo-oscuro .modal-content {
+    background-color: #1b263b;
+    color: #e0e1dd;
+}
+
+.modo-oscuro .modal-header,
+.modo-oscuro .modal-footer {
+    border-color: #415a77;
+}
+
+.modo-oscuro .btn-close {
+    filter: invert(1);
+}
+
+.modo-oscuro .card-body{
+    background-color: #1b263b;
+    color: rgb(255, 255, 255);
+    border-radius: 1%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

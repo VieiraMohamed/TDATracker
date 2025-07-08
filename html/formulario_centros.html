@@ -1,0 +1,74 @@
+<h4 class="text-center mb-4"><i class="fas fa-address-card me-2"></i>Registro Centros Especializados</h4>
+<form id="form-contacto">
+    <!-- Nombre -->
+    <div class="row g-3">
+        <div class="col-12">
+            <label for="nombre3" class="form-label">Nombre del Centro</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input type="text" class="form-control" id="nombre3" placeholder="Ingrese el nombre del centro" required>
+            </div>
+            <p id="nombre3-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+    </div>
+
+    <!-- Direccion-->
+    <div class="row g-3">
+        <div class="col-12">
+            <label for="direccion" class="form-label">Dirección</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección completa" required>
+            </div>
+            <p id="direccion-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+    </div>
+
+    <!-- Confirmar contraseña-->
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="password" class="form-label">Contraseña</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <input type="password" class="form-control" id="password" placeholder="Mínimo 6 caracteres" required>
+            </div>
+            <p id="password-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+        <div class="col-md-6">
+            <label for="password-confirmar" class="form-label">Confirmar contraseña</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <input type="password" class="form-control" id="password-confirmar" placeholder="Mínimo 6 caracteres" required>
+            </div>
+            <p id="password-error-confirmar" class="text-danger small mt-1 mb-0"></p>
+        </div>
+    </div>
+
+    <!-- Fila para Email y Teléfono -->
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="email3" class="form-label">Correo Electrónico</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                <input type="email" class="form-control" id="email3" placeholder="ejemplo@dominio.com" required>
+            </div>
+            <p id="email3-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+        <div class="col-md-6">
+            <label for="telefono3" class="form-label">Teléfono</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                <input type="tel" class="form-control" id="telefono3" placeholder="9 dígitos" required>
+            </div>
+            <p id="telefono3-error" class="text-danger small mt-1 mb-0"></p>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 mt-4">
+        <i class="fas fa-paper-plane me-2"></i>Registrar
+    </button>
+
+    <div class="text-center mt-3">
+        <a href="../PHP/inicio_sesion.php">Iniciar Sesión</a>
+    </div>
+</form>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Herramienta online para el seguimiento del Trastorno de Déficit de Atención. Registro, control y análisis de pacientes con TDAH.">
+    <meta name="keywords" content="TDAH, TDATracker, déficit de atención, control pacientes, seguimiento TDA, herramienta TDAH">
+    <meta name="author" content="Equipo TDATracker">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="TDATracker | Seguimiento de TDAH">
+    <meta property="og:description" content="Gestiona y analiza pacientes con TDAH desde una plataforma web interactiva.">
+    <meta property="og:url" content="https://tdatatracker.infy.uk">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <title>TDATracker | Seguimiento y control de pacientes con TDAH</title>
+</head>
+
+<body>
+    <!-- Navbar con botón hamburguesa -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <!-- Logo -->
+        <img src="./img/logo3.png">
+
+        <!-- Botón Hamburguesa -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menú -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#quienes-somos">Quiénes somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./PHP/inicio_sesion.php">Inicio sesión</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+
+    <!-- SECCIÓN DE PORTADA -->
+    <header class="container-fluid  text-light d-flex align-items-center justify-content-center text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Bienvenido a TDATracker</h1>
+            <p class="lead fw-bold">Explora contenido sobre el TDA de una manera interactiva.</p>
+            <a href="./Funciones/index.html" class="btn btn-primary btn-lg custom-btn">Explorar </a>
+        </div>
+    </header>
+
+    <!-- Sección de cartas -->
+    <div class="container">
+        <h3 class="titulocartas mt-5">Explora las posibilidades de TDATracker</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./img/foto1.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+                            voluptates eos cupiditate nemo quos nostrum iure quis exercitationem ad dicta.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./img/foto2.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+                            voluptates eos cupiditate nemo quos nostrum iure quis exercitationem ad dicta.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./img/foto3.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+                            voluptates eos cupiditate nemo quos nostrum iure quis exercitationem ad dicta.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="quienes-somos" class="quienes-somos bg-light py-5">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <h2 class="fw-bold">¿Quiénes Somos?</h2>
+                <p class="text-muted">Conoce a nuestro equipo y lo que nos motiva.</p>
+            </div>
+
+            <div class="row">
+                <!-- Persona 1 -->
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="./img/nuria.PNG" class="card-img-top" alt="Foto de Persona 1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Nuria</h5>
+                            <p class="card-text text-muted">Desarrolladora Full-Stack</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Persona 2 -->
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="./img/aurelio.PNG" class="card-img-top" alt="Foto de Persona 2">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Aurelio</h5>
+                            <p class="card-text text-muted">Desarrollador UX-IX</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Persona 3 -->
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="./img/IMG_6132.jpg" class="card-img-top" alt="Foto de Persona 3">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Jose Casado</h5>
+                            <p class="card-text text-muted">Desarrollador Back-end</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Persona 4 -->
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="./img/vieira.webp" class="card-img-top" alt="Foto de Persona 4">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Vieira</h5>
+                            <p class="card-text text-muted">Desarrollador Full-Stack</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contacto" class="contacto bg-light py-5">
+        <div class="container">
+            <!-- Título y descripción -->
+            <div class="row text-center mb-4">
+                <h2 class="fw-bold">Contáctanos</h2>
+                <p class="text-muted">¿Tienes preguntas o comentarios? Estamos aquí para ayudarte.</p>
+            </div>
+
+            <!-- Formulario de contacto -->
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form action="./PHP/util/enviar_formulario.php" method="POST">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe tu nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="ejemplo@correo.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="5"
+                                placeholder="Escribe tu mensaje aquí"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-contacto">Enviar Mensaje</button>
+                        </div>
+                    </form>
+                    <!-- Mostrar el mensaje debajo del formulario -->
+                    <div id="mensaje-alerta" class="mt-3"></div>
+                </div>
+            </div>
+
+            <!-- Información adicional -->
+            <div class="row text-center mt-5">
+                <div class="col-md-4">
+                    <i class="bi bi-geo-alt fs-1 text-primary"></i>
+                    <h5 class="mt-2">Dirección</h5>
+                    <p class="text-muted">Av. de Isaac Peral, 44, Carretera de Cádiz, 29004 Málaga</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-telephone fs-1 text-primary"></i>
+                    <h5 class="mt-2">Teléfono</h5>
+                    <p class="text-muted">+34 654-724-185</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-envelope fs-1 text-primary"></i>
+                    <h5 class="mt-2">Correo Electrónico</h5>
+                    <p class="text-muted">TDATracker@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Información de la marca -->
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold">TDATracker</h5>
+                    <p class="text-muted">Explora contenido interactivo sobre el TDA, conecta y aprende con nosotros.
+                    </p>
+                </div>
+
+                <!-- Enlaces rápidos -->
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#quienes-somos" class="text-light text-decoration-none">Quiénes Somos</a></li>
+                        <li><a href="#contacto" class="text-light text-decoration-none">Contacto</a></li>
+                        <li><a href="./presentacion/presentacion.html" class="text-light text-decoration-none">Presentacion</a></li>
+                    </ul>
+                </div>
+
+                <!-- Redes sociales -->
+                <div class="col-md-4 mb-3 text-center text-md-start">
+                    <h5 class="fw-bold">Síguenos</h5>
+                    <a href="#" class="text-light me-3"><i class="bi bi-facebook fs-4"></i></a>
+                    <a href="#" class="text-light me-3"><i class="bi bi-twitter fs-4"></i></a>
+                    <a href="#" class="text-light"><i class="bi bi-instagram fs-4"></i></a>
+                </div>
+            </div>
+
+            <!-- Línea divisoria -->
+            <hr class="bg-light">
+
+            <!-- Derechos reservados -->
+            <div class="row">
+                <div class="col text-center">
+                    <p class="mb-0">© 2025 TDATracker. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón para volver al principio -->
+    <!-- Botón flotante para volver al inicio -->
+    <button id="scrollToTopBtn" class="btn btn-primary">
+        <i class="bi bi-arrow-up-circle"></i>
+    </button>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+    </script>
+    <script src="./JS/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego de Memoria - TDATracker</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>🧠 Juego de Memoria TDATracker</h1>
+
+  <div class="info">
+    <div>Intentos: <span id="intentos">0</span></div>
+    <div>Tiempo: <span id="tiempo">00:00</span></div>
+    <button id="btn-empezar">▶️ Empezar</button>
+    <button id="btn-reiniciar">🔄 Reiniciar</button>
+  </div>
+
+  <div class="tablero" id="tablero"></div>
+
+  <div class="victoria hidden" id="victoria">
+    <h2>🎉 ¡Has ganado!</h2>
+    <p>Intentos: <span id="final-intentos"></span></p>
+    <p>Tiempo: <span id="final-tiempo"></span></p>
+    <p>🧘‍♂️ Estás entrenando tu mente. ¡Sigue así!</p>
+    <button id="btn-jugar-otra">🔁 Jugar otra vez</button>
+  </div>
+
+  <script src="logicaCarta.js"></script>
+</body>
+</html> 

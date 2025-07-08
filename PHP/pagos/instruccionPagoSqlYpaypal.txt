@@ -1,0 +1,21 @@
+quitar premium : 
+
+UPDATE Usuario
+SET plan_activo = 0, plan_expira = NULL
+WHERE id = ID;
+--------------------------------------------------------------------
+
+
+cuenta sandbox paypal para pagar en modo prueba
+cuenta: sb-k43csd41582262@personal.example.com
+pass: 64.{(+Gk
+-------------------------------------------------------------
+tarjeta:
+Tarjeta de crédito aprobada (Visa):
+
+Número: 4111 1111 1111 1111
+
+Fecha de expiración: Cualquier fecha en el futuro
+
+CVV: 123
+---------------------------------------------

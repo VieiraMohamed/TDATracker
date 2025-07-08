@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Funciones Principales</title>
+    <style>
+        body {
+            background-color: #BEE3EE;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #284b63;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1000px;
+        }
+
+        .card {
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            background: #E6F2F8;
+            box-shadow: 0 2px 6px rgba(40, 75, 99, 0.1);
+            border-radius: 8px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(40, 75, 99, 0.25);
+        }
+
+        .card h5 {
+            color: #284b63;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: #556b7a;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: #284b63;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Funcionalidades destacadas -->
+    <section class="section" id="funcionalidades">
+        <div class="container">
+            <h2 class="mb-4">Funciones principales</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#videoCalendario">
+                        <i class="fa-solid fa-calendar-days card-icon"></i>
+                        <h5>Calendario emocional</h5>
+                        <p>Registra el estado de ánimo y visualiza patrones que ayudan a mejorar el autoconocimiento.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#videoTareas">
+                        <i class="fa-solid fa-list-check card-icon"></i>
+                        <h5>Lista de tareas inteligente</h5>
+                        <p>Organiza el día con alertas por prioridades, enfoque por bloques y retroalimentación visual.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#videoVideollamadas">
+                        <i class="fa-solid fa-video card-icon"></i>
+                        <h5>Videollamadas con profesionales</h5>
+                        <p>Comunicación directa y sin barreras con terapeutas, tutores o tu equipo de apoyo.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#videoIA">
+                        <i class="fa-solid fa-robot card-icon"></i>
+                        <h5>Chat con IA</h5>
+                        <p>Consulta dudas, recibe motivación o sugerencias personalizadas gracias a la inteligencia
+                            artificial.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#videoMinijuegos">
+                        <i class="fa-solid fa-gamepad card-icon"></i>
+                        <h5>Minijuegos</h5>
+                        <p>Ejercita tu mente con juegos interactivos y divertidos.</p>
+                    </div>
+                </div>
+                <!-- Música -->
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#videoMusica">
+                        <i class="fa-brands fa-youtube card-icon"></i>
+                        <h5>Música de YouTube</h5>
+                        <p>Relájate o concéntrate con música recomendada desde YouTube según tu estado de ánimo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modales -->
+
+    <!-- Modal Calendario -->
+    <div class="modal fade" id="videoCalendario" tabindex="-1" aria-labelledby="labelCalendario" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelCalendario">Demostración Calendario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <video id="videoCalendarioPlayer" autoplay muted controls controls width="50%">
+                        <source src="calendario.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tareas -->
+    <div class="modal fade" id="videoTareas" tabindex="-1" aria-labelledby="labelTareas" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelTareas">Demostración Lista de Tareas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <video id="videoCalendarioPlayer" autoplay muted controls controls width="50%">
+                        <source src="tareas.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Chat IA -->
+    <!-- Modal Chat IA -->
+<div class="modal fade" id="videoIA" tabindex="-1" aria-labelledby="labelIA" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="labelIA">Demostración Chat con IA</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/nbnpjhTTG5k"
+                  title="Demostración Chat IA"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Modal Videollamadas -->
+    <div class="modal fade" id="videoVideollamadas" tabindex="-1" aria-labelledby="labelVideollamadas"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelVideollamadas">Demostración Videollamadas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <video id="videoCalendarioPlayer" autoplay muted controls controls width="50%">
+                        <source src="videollamadas.mp4" type="video/mp4">
+                    </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Minijuegos -->
+    <div class="modal fade" id="videoMinijuegos" tabindex="-1" aria-labelledby="labelMinijuegos" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelMinijuegos">Demostración Minijuegos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <video id="videoCalendarioPlayer" autoplay muted controls controls width="50%">
+                        <source src="juegos.mp4" type="video/mp4">
+                    </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Música -->
+    <div class="modal fade" id="videoMusica" tabindex="-1" aria-labelledby="labelMusica" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelMusica">Demostración Música de YouTube</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <video id="videoCalendarioPlayer" autoplay muted controls controls width="50%">
+                        <source src="musica.mp4" type="video/mp4">           
+                    </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+     <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const modals = document.querySelectorAll('.modal');
+
+        modals.forEach(modal => {
+            const video = modal.querySelector('video');
+
+            if (video) {
+                modal.addEventListener('shown.bs.modal', () => {
+                    video.currentTime = 0;
+                    video.play();
+                });
+
+               
+            }
+        });
+    });
+</script>
+</body>
+
+</html>

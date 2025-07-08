@@ -1,0 +1,93 @@
+body {
+    background: #d9e7f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-weight: 700;
+    color: #343a40;
+}
+
+.container-juegos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-juego {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-juego:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-juego img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.card-juego:hover img {
+    transform: scale(1.05);
+}
+
+.card-juego .info {
+    padding: 20px;
+}
+
+.card-juego .info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #212529;
+    font-weight: 600;
+}
+
+.card-juego .info p {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 576px) {
+    .card-juego img {
+        height: 160px;
+    }
+
+    .card-juego .info h3 {
+        font-size: 1.1rem;
+    }
+
+    .card-juego .info p {
+        font-size: 0.9rem;
+    }
+}
+.btn-outline-primary {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+}

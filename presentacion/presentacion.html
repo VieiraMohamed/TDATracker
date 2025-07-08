@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TDA Tracker - App para personas con TDA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #ff9f1c;
+            --accent: #2ec4b6;
+            --light: #f8f9fa;
+            --dark: #284b63;
+        }
+
+        body {
+            background-color: #f4f9ff;
+            font-family: 'Segoe UI', 'Nunito', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #d1ecf1 0%, #a8d8ea 100%);
+            text-align: center;
+            padding: 120px 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.2)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            opacity: 0.3;
+        }
+
+        .hero img {
+            max-width: 180px;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 5px solid white;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+        }
+
+        .card {
+            border: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: white;
+            box-shadow: 0 5px 15px rgba(40, 75, 99, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(40, 75, 99, 0.2);
+        }
+
+        .card h5 {
+            color: var(--dark);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .card h5::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .card:hover h5::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #3a7bd5;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.6);
+        }
+
+        /* Decoraciones */
+        .shape {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 260px solid var(--secondary);
+        }
+
+        /* Feature icons */
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            background: rgba(74, 144, 226, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Tech stack icons */
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Floating elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* DAFO Styles */
+        .dafo-card {
+            border-left: 5px solid;
+            height: 100%;
+        }
+
+        .fortalezas {
+            border-left-color: #28a745;
+        }
+
+        .debilidades {
+            border-left-color: #dc3545;
+        }
+
+        .oportunidades {
+            border-left-color: #007bff;
+        }
+
+        .amenazas {
+            border-left-color: #ffc107;
+        }
+
+        .dafo-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .fortalezas .dafo-icon {
+            color: #28a745;
+        }
+
+        .debilidades .dafo-icon {
+            color: #dc3545;
+        }
+
+        .oportunidades .dafo-icon {
+            color: #007bff;
+        }
+
+        .amenazas .dafo-icon {
+            color: #ffc107;
+        }
+
+        /* CAME Styles */
+        .came-card {
+            border-top: 5px solid;
+            height: 100%;
+        }
+
+        .corregir {
+            border-top-color: #dc3545;
+        }
+
+        .afrontar {
+            border-top-color: #ffc107;
+        }
+
+        .mantener {
+            border-top-color: #28a745;
+        }
+
+        .explotar {
+            border-top-color: #007bff;
+        }
+
+        .came-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .corregir .came-icon {
+            color: #dc3545;
+        }
+
+        .afrontar .came-icon {
+            color: #ffc107;
+        }
+
+        .mantener .came-icon {
+            color: #28a745;
+        }
+
+        .explotar .came-icon {
+            color: #007bff;
+        }
+
+        .team-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .team-card {
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Timeline Styles */
+        .timeline-wrapper {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            top: 20px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-badge {
+            right: -30px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-badge {
+            left: -30px;
+        }
+
+        .timeline-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .timeline-header h3 {
+            margin: 0;
+            color: var(--dark);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-badge {
+            background: rgba(74, 111, 165, 0.1);
+            color: var(--dark);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tech-badge i {
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-wrapper::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-badge {
+                left: 0 !important;
+            }
+        }
+
+        /* Estilos para las imágenes flotantes */
+        .team-hover-img {
+            display: none;
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 100px;
+            border: 4px solid white;
+            /* Borde blanco más grueso */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            background-color: white;
+            /* Fondo blanco para asegurar que no haya transparencia */
+        }
+
+        .team-card {
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Logo footer */
+        .footer-logo {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* para los miembros */
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="shape circle" style="top: -150px; right: -150px;"></div>
+        <div class="shape triangle" style="bottom: -100px; left: -100px; transform: rotate(30deg);"></div>
+
+        <div class="container" data-aos="fade-up">
+            <img src="logo.jpg" alt="Logo TDA Tracker" class="pulse">
+            <h1 class="display-4 fw-bold mb-3">TDA Tracker</h1>
+            <p class="lead fs-3" style="max-width: 700px; margin: 0 auto;">La app que transforma el día a día de
+                personas con TDA</p>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a href="#funcionalidades" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket me-2"></i>Descubre más
+                </a>
+                <a href="https://tdatracker.infy.uk/?i=1" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-play-circle me-2"></i>Ver demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="mb-4">Organización, seguimiento y acompañamiento real</h2>
+                    <p class="lead">Una solución integral diseñada específicamente para las necesidades de personas con
+                        TDA/TDAH.</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                            <i class="fas fa-brain text-primary fs-3"></i>
+                        </div>
+                        <p class="mb-0">Herramientas cognitivas adaptadas a tu forma de pensar</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                        alt="Persona usando app" class="img-fluid rounded-4 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiénes Somos Section -->
+    <section class="section bg-light py-5" id="team">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="mb-3">Quiénes Somos</h2>
+                <p class="lead">Nuestro equipo</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <!-- Miembro 1 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100 hover-trigger" data-img="vieira.webp">
+                        <div class="card-body text-center p-4">
+                            <div class="team-icon bg-primary mb-3 mx-auto">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <h4 class="card-title ">José Antonio Vieira</h4>
+                            <p class="text-muted">Desarrollador</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 2 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100 hover-trigger" data-img="nuria.png">
+                        <div class="card-body text-center p-4">
+                            <div class="team-icon bg-success mb-3 mx-auto">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <h4 class="card-title ">Nuria Gómez Martín</h4>
+                            <p class="text-muted">Desarrolladora</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 3 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100 hover-trigger" data-img="aurelio.png">
+                        <div class="card-body text-center p-4">
+                            <div class="team-icon bg-warning mb-3 mx-auto">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <h4 class="card-title ">Aurelio Álamos Martín</h4>
+                            <p class="text-muted">Desarrollador</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 4 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100 hover-trigger" data-img="casado.jpg">
+                        <div class="card-body text-center p-4">
+                            <div class="team-icon bg-info mb-3 mx-auto">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <h4 class="card-title ">José Antonio Casado</h4>
+                            <p class="text-muted">Desarrollador</p>
+                        </div>
+                    </div>
+                </div>
+                <img id="team-hover-image" class="team-hover-img" src="casado.jpg" alt="Foto de perfil">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hoverImage = document.getElementById('team-hover-image');
+            const triggers = document.querySelectorAll('.hover-trigger');
+            let hideTimeout = null;
+            let activeTrigger = null;
+
+            const hideImage = () => {
+                hoverImage.style.opacity = '0';
+                hideTimeout = setTimeout(() => {
+                    hoverImage.style.display = 'none';
+                    activeTrigger = null;
+                }, 300);
+            };
+
+            const cancelHide = () => {
+                if (hideTimeout) {
+                    clearTimeout(hideTimeout);
+                    hideTimeout = null;
+                }
+            };
+
+            triggers.forEach(trigger => {
+                // Preload image
+                const img = new Image();
+                img.src = trigger.dataset.img;
+
+                trigger.addEventListener('mouseenter', (e) => {
+                    cancelHide();
+
+                    activeTrigger = trigger;
+                    hoverImage.src = trigger.dataset.img;
+                    hoverImage.style.display = 'block';
+                    hoverImage.style.opacity = '0';
+
+                    const rect = trigger.getBoundingClientRect();
+                    hoverImage.style.left = `${rect.left + rect.width / 2 - 100}px`;
+                    hoverImage.style.top = `${rect.top - 220}px`;
+
+                    setTimeout(() => {
+                        hoverImage.style.opacity = '1';
+                    }, 10);
+                });
+
+                trigger.addEventListener('mouseleave', hideImage);
+
+                trigger.addEventListener('mousemove', (e) => {
+                    const rect = trigger.getBoundingClientRect();
+                    const offsetX = (e.clientX - rect.left) / rect.width - 0.5;
+                    hoverImage.style.transform = `translateX(${offsetX * 10}px)`;
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                if (!activeTrigger) return;
+
+                const rect = activeTrigger.getBoundingClientRect();
+                const stillVisible =
+                    rect.top >= 0 &&
+                    rect.bottom <= window.innerHeight &&
+                    rect.left >= 0 &&
+                    rect.right <= window.innerWidth;
+
+                if (!stillVisible) {
+                    hideImage();
+                }
+            });
+        });
+
+
+    </script>
+
+    <!-- Mision, Vision, Valores Section -->
+    <section class="section bg-light" id="mision-vision">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="mb-3">Nuestra Identidad</h2>
+                <p class="lead">Los pilares que guían nuestro trabajo</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Misión -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card p-4 h-100 text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="mb-3">Misión</h3>
+                        <p>Centramos nuestros esfuerzos en ayudar a las personas con trastorno de déficit de atención
+                            (TDA), mediante una herramienta que fomenta la organización y la gestión de las tareas
+                            diarias mejorando su calidad de vida.</p>
+                    </div>
+                </div>
+
+                <!-- Visión -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card p-4 h-100 text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="mb-3">Visión</h3>
+                        <p>Queremos ser una plataforma reconocida en el avance del tratamiento de trastornos del
+                            neurodesarrollo.</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary bg-opacity-10 text-primary">Futuro</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Valores -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card p-4 h-100 text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="mb-3">Valores</h3>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Trabajo en equipo</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Innovación</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Empatía</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Orientación a
+                                resultados</li>
+                            <li><i class="fas fa-check-circle text-primary me-2"></i>Confianza</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publico objetivo Seccion -->
+    <section class="section bg-white py-5" id="target">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="mb-3">¿Para quién es TDA Tracker?</h2>
+            </div>
+
+            <div class="row text-center">
+                <!-- Schools -->
+                <div class="col-md-4 mb-4">
+                    <div class="p-3">
+                        <i class="fas fa-school fa-3x mb-3 text-primary"></i>
+                        <h4>Instituciones Educativas</h4>
+                        <p class="mb-0">Colegios y centros con programas de inclusión</p>
+                    </div>
+                </div>
+
+                <!-- Specialists -->
+                <div class="col-md-4 mb-4">
+                    <div class="p-3">
+                        <i class="fas fa-user-md fa-3x mb-3 text-success"></i>
+                        <h4>Especialistas</h4>
+                        <p class="mb-0">Psicólogos, pedagogos y terapeutas</p>
+                    </div>
+                </div>
+
+                <!-- Families -->
+                <div class="col-md-4 mb-4">
+                    <div class="p-3">
+                        <i class="fas fa-home fa-3x mb-3 text-warning"></i>
+                        <h4>Familias</h4>
+                        <p class="mb-0">Padres de niños y personas con TDA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Marketing Section -->
+    <section class="section bg-white" id="marketing">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="mb-3">Plan de Marketing</h2>
+                <p class="lead">Estrategias clave para nuestro lanzamiento</p>
+            </div>
+
+            <div class="row">
+                <!-- Redes Sociales -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-hashtag fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="text-center mb-3">Redes Sociales</h4>
+                            <ul>
+                                <li>Contenido educativo diario</li>
+                                <li>Campañas interactivas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publicidad Digital -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-ad fa-3x text-success"></i>
+                            </div>
+                            <h4 class="text-center mb-3">Publicidad Digital</h4>
+                            <ul>
+                                <li>Google Ads (palabras clave TDA)</li>
+                                <li>Facebook/Instagram</li>
+                                <li>Influencers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing Offline -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-handshake fa-3x text-warning"></i>
+                            </div>
+                            <h4 class="text-center mb-3">Alianzas</h4>
+                            <ul>
+                                <li>Asociaciones TDAH</li>
+                                <li>Centros educativos</li>
+                                <li>Profesionales de salud</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos Section -->
+    <section class="section bg-light" id="recursos">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="mb-3">Recursos Necesarios</h2>
+                <p class="lead">Infraestructura para el desarrollo</p>
+            </div>
+
+            <div class="row">
+                <!-- Equipo -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="mb-4"><i class="fas fa-laptop-code me-2"></i>Equipo Técnico</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h6>Hardware</h6>
+                                    <ul>
+                                        <li>4 ordenadores</li>
+                                        <li>Servidor(online)</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <h6>Software</h6>
+                                    <ul>
+                                        <li>Licencias desarrollo</li>
+                                        <li>Plataforma hosting</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="mb-4"><i class="fas fa-users me-2"></i>Equipo Humano</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h6>Desarrollo</h6>
+                                    <ul>
+                                        <li>2 Full-stack</li>
+                                        <li>1 Back-end</li>
+                                        <li>1 UX/UI</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <h6>Otros</h6>
+                                    <ul>
+                                        <li>Marketing digital</li>
+                                        <li>Co-working</li>
+                                        <li>Soporte técnico</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAFO Section -->
+    <section class="section bg-white" id="dafo">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="mb-3">Análisis DAFO</h2>
+                <p class="lead">Evaluación estratégica de TDA Tracker</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Fortalezas -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card dafo-card fortalezas p-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="dafo-icon">
+                                <i class="fas fa-thumbs-up"></i>
+                            </div>
+                            <h4 class="mb-0 ms-3">Fortalezas</h4>
+                        </div>
+                        <ul class="ps-4">
+                            <li class="mb-2">Equipo joven con ganas.</li>
+                            <li class="mb-2">Equipo cualificado.</li>
+                            <li class="mb-2">Contenido relevante y científico</li>
+                            <li class="mb-2">Colaboración en equipo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Debilidades -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card dafo-card debilidades p-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="dafo-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h4 class="mb-0 ms-3">Debilidades</h4>
+                        </div>
+                        <ul class="ps-4">
+                            <li class="mb-2">Falta de experiencia en el sector tecnológico.</li>
+                            <li class="mb-2">Inicio con pocos recursos.</li>
+                            <li class="mb-2">Dependencia de centros especializados</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Oportunidades -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card dafo-card oportunidades p-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="dafo-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4 class="mb-0 ms-3">Oportunidades</h4>
+                        </div>
+                        <ul class="ps-4">
+                            <li class="mb-2">Sector en auge.</li>
+                            <li class="mb-2">Ubicación privilegiada.</li>
+                            <li class="mb-2">Aumento de la conciencia sobre el TDA.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Amenazas -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card dafo-card amenazas p-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="dafo-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="mb-0 ms-3">Amenazas</h4>
+                        </div>
+                        <ul class="ps-4">
+                            <li class="mb-2">Alta competitividad.</li>
+                            <li class="mb-2">Posible caída de la demanda .</li>
+                            <li class="mb-2">Cambios legales.</li>
+                            <li class="mb-2">Las leyes de protección de datos personales son cada vez más estrictas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAME Section -->
+    <section class="section bg-light" id="came">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="mb-3">Análisis CAME</h2>
+                <p class="lead">Estrategias para corregir, afrontar, mantener y explotar</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Corregir -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card came-card corregir p-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="came-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h4 class="mb-0 ms-3">Corregir (Debilidades)</h4>
+                        </div>
+                        <ul class="ps-4">
+                            <li class="mb-2">Impartir cursos para asentar los conocimientos y mejorar las habilidades.</li>
+                            <li class="mb-2">Hacer Crowdfunding en asociaciones de padres y tutores para iniciar el proyecto.</li>
+                            <li class="mb-2">Bootcamps para formar personal.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Afrontar -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card came-card afrontar p-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="came-icon">
+                                <i class="fas fa-fist-raised"></i>
+                            </div>
+                            <h4 class="mb-0 ms-3">Afrontar (Amenazas)</h4>
+                        </div>
+                        <ul class="ps-4">
+                            <li class="mb-2">Colaboraciones estratégicas.</li>
+                            <li class="mb-2">Certificaciones y auditorías de seguridad.
+</li>
+                            <li class="mb-2">Analizar la situación ante una caída de la demanda y diversificar el producto.
+</li>
+                            <li class="mb-2">Contratar o colaborar con asesores legales.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mantener -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card came-card mantener p-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="came-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h4 class="mb-0 ms-3">Mantener (Fortalezas)</h4>
+                        </div>
+                        <ul class="ps-4">
+                            <li class="mb-2">Proponer recompensas a los empleados con mayor rendimiento.</li>
+                            <li class="mb-2">Hacer equipos de trabajo para maximizar la productividad.</li>
+                            <li class="mb-2">Mantener comunicación con los especialistas en salud mental.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Explotar -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card came-card explotar p-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="came-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4 class="mb-0 ms-3">Explotar (Oportunidades)</h4>
+                        </div>
+                        <ul class="ps-4">
+                            <li class="mb-2">Posicionamiento estratégico</li>
+                            <li class="mb-2">Atracción de inversiones y financiamiento</li>
+                            <li class="mb-2">Alianzas locales con centros de salud y educación</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-white" id="competencia">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="mb-3">Análisis de los Competidores</h2>
+                <p class="lead">Comparativa visual de las soluciones actuales</p>
+            </div>
+
+            <div class="row g-4" data-aos="fade-up">
+                <div class="col-md-6">
+                    <div class="card p-4 h-100">
+                        <h5 class="mb-3"><i class="fas fa-bolt me-2 text-primary"></i> Competidores Directos</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">🎯 <strong>ADHD Coach:</strong> 24,69€/mes · Apoyo clínico y
+                                recursos</li>
+                            <li class="list-group-item">🎵 <strong>Focus@Will:</strong> $52.49/año · Música para
+                                concentración</li>
+                            <li class="list-group-item">💬 <strong>Shine:</strong> $8–$14.99/mes · Productividad + salud
+                                mental</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4 h-100">
+                        <h5 class="mb-3"><i class="fas fa-globe me-2 text-success"></i> Competidores Indirectos</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">📒 <strong>Notion:</strong> Gratis · Organización flexible con
+                                IA</li>
+                            <li class="list-group-item">📋 <strong>Trello:</strong> Gratis/$5+ · Gestión de tareas
+                                visual</li>
+                            <li class="list-group-item">🧘 <strong>Headspace:</strong> $12.99/mes · Meditación y
+                                relajación</li>
+                            <li class="list-group-item">🌿 <strong>Calm:</strong> $14.99/mes · Bienestar y contenido
+                                infantil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Financial Analysis Section -->
+    <section class="section bg-white" id="finanzas">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="mb-3">Análisis Financiero</h2>
+                <p class="lead">Comparativa de ingresos vs gastos y estructura de financiación</p>
+            </div>
+
+            <!-- Financing Options Tabs -->
+            <div class="row mb-4" data-aos="fade-up">
+                <div class="col-12">
+                    <ul class="nav nav-tabs justify-content-center" id="financingTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="original-tab" data-bs-toggle="tab"
+                                data-bs-target="#original" type="button" role="tab">
+                                Escenario Original
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="alternative-tab" data-bs-toggle="tab"
+                                data-bs-target="#alternative" type="button" role="tab">
+                                Escenario Alternativo
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content" id="financingTabsContent">
+                <!-- Original Scenario -->
+                <div class="tab-pane fade show active" id="original" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-6" data-aos="fade-right">
+                            <div class="card p-4 h-100">
+                                <h4 class="mb-4 text-center">Estructura de Financiación</h4>
+                                <canvas id="originalFinancingChart"></canvas>
+                                <div class="mt-3 text-center">
+                                    <span class="badge bg-primary me-2">Capital Social: 5.416€ (35%)</span>
+                                    <span class="badge bg-success">Subvención: 10.000€ (65%)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-left">
+                            <div class="card p-4 h-100">
+                                <h4 class="mb-4 text-center">Flujo Anual</h4>
+                                <canvas id="originalFlowChart"></canvas>
+                                <div class="mt-3 text-center">
+                                    <span class="badge bg-success me-2">Ganancias: 17.020€</span>
+                                    <span class="badge bg-danger me-2">Inversión: 15.416€</span>
+                                    <span class="badge bg-info">Resultado: +1.604€</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alternative Scenario -->
+                <div class="tab-pane fade" id="alternative" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-6" data-aos="fade-right">
+                            <div class="card p-4 h-100">
+                                <h4 class="mb-4 text-center">Estructura de Financiación</h4>
+                                <canvas id="alternativeFinancingChart"></canvas>
+                                <div class="mt-3 text-center">
+                                    <span class="badge bg-primary me-2">Capital Social: 8.416€ (55%)</span>
+                                    <span class="badge bg-success">Subvención: 7.000€ (45%)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-left">
+                            <div class="card p-4 h-100">
+                                <h4 class="mb-4 text-center">Flujo Anual</h4>
+                                <canvas id="alternativeFlowChart"></canvas>
+                                <div class="mt-3 text-center">
+                                    <span class="badge bg-success me-2">Ganancias: 17.020€</span>
+                                    <span class="badge bg-danger me-2">Inversión: 15.416€</span>
+                                    <span class="badge bg-info">Resultado: +1.604€</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart.js Script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Original Financing Chart (Horizontal Bar)
+            const originalFinancingCtx = document.getElementById('originalFinancingChart').getContext('2d');
+            new Chart(originalFinancingCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Capital Social', 'Subvención'],
+                    datasets: [{
+                        label: 'Importe (€)',
+                        data: [5416, 10000],
+                        backgroundColor: [
+                            'rgba(13, 110, 253, 0.8)',
+                            'rgba(25, 135, 84, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(13, 110, 253, 1)',
+                            'rgba(25, 135, 84, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Importe (€)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return context.parsed.x.toLocaleString('es-ES') + '€';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Original Flow Chart
+            const originalFlowCtx = document.getElementById('originalFlowChart').getContext('2d');
+            new Chart(originalFlowCtx, {
+                type: 'line',
+                data: {
+                    labels: ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'],
+                    datasets: [
+                        {
+                            label: 'Ganancias',
+                            data: [1160, 1910, 1910, 1530, 1530, 150,150,150,3050,2160,1910,1410],
+                            borderColor: 'rgba(25, 135, 84, 1)',
+                            backgroundColor: 'rgba(25, 135, 84, 0.1)',
+                            borderWidth: 3,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Inversión',
+                            data: [4011, 1255, 925, 945, 965, 985, 1005, 1025, 1045,1065, 1085, 1105],
+                            borderColor: 'rgba(220, 53, 69, 1)',
+                            backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                            borderWidth: 3,
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: {
+                                display: true,
+                                text: 'Cantidad (€)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Alternative Financing Chart (Horizontal Bar)
+            const alternativeFinancingCtx = document.getElementById('alternativeFinancingChart').getContext('2d');
+            new Chart(alternativeFinancingCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Capital Social', 'Subvención'],
+                    datasets: [{
+                        label: 'Importe (€)',
+                        data: [8416, 7000],
+                        backgroundColor: [
+                            'rgba(13, 110, 253, 0.8)',
+                            'rgba(25, 135, 84, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(13, 110, 253, 1)',
+                            'rgba(25, 135, 84, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Importe (€)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return context.parsed.x.toLocaleString('es-ES') + '€';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Alternative Flow Chart (same data, different context)
+            const alternativeFlowCtx = document.getElementById('alternativeFlowChart').getContext('2d');
+            new Chart(alternativeFlowCtx, {
+                type: 'line',
+                data: {
+                    labels: ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'],
+                    datasets: [
+                        {
+                            label: 'Ganancias',
+                            data: [1160, 1910, 1910, 1530, 1530, 150,150,150,3050,2160,1910,1410],
+                            borderColor: 'rgba(25, 135, 84, 1)',
+                            backgroundColor: 'rgba(25, 135, 84, 0.1)',
+                            borderWidth: 3,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Inversión',
+                            data: [4011, 1255, 925, 945, 965, 985, 1005, 1025, 1045,1065, 1085, 1105],
+                            borderColor: 'rgba(220, 53, 69, 1)',
+                            backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                            borderWidth: 3,
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: {
+                                display: true,
+                                text: 'Cantidad (€)'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <!-- Development Phases Section -->
+    <section class="section bg-white" id="phases">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="mb-3">Fases de Desarrollo</h2>
+                <p class="lead">Nuestro proceso de construcción paso a paso</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-wrapper">
+                <!-- Phase 1 -->
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-badge bg-primary">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <h3>Fase 1: Estructura Base</h3>
+                            <span class="badge bg-primary">2 semanas</span>
+                        </div>
+                        <div class="timeline-content" style="text-align: justify;">
+                            <p>Se estableció la portada como esqueleto para facilitar el desarrollo del backend, dando
+                                comienzo al registro e inicio de sesión del usuario. Se diseñó la base de datos a través
+                                de un diagrama ER y se creó. Se añadió el calendario, estados de ánimo, tareas notas y
+                                el reproductor de música.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge"><i class="fas fa-database"></i> StarUML</span>
+                                <span class="tech-badge"><i class="fas fa-database"></i> MySQL Workbench</span>
+                                <span class="tech-badge"><i class="fab fa-php"></i> PHP</span>
+                                <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
+                                <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="tech-badge"><i class="fas fa-user"></i> Brevo API</span>
+                                <span class="tech-badge"><i class="fab fa-youtube"></i> YouTube</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-badge bg-success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <h3>Fase 2: Validación y Dashboard</h3>
+                            <span class="badge bg-success">2 semanas</span>
+                        </div>
+                        <div class="timeline-content" style="text-align: justify;">
+                            <p>Validación de formularios y creación del dashboard de usuario permanencia de datos de
+                                los usuarios. Implementación del registro e inicio de sesión del especialista.
+                                Exploración inicial de API para videollamadas y chat IA.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
+                                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="tech-badge"><i class="fab fa-php"></i> PHP</span>
+                                <span class="tech-badge"><i class="fas fa-video"></i> Jitsi Meet API</span>
+                                <span class="tech-badge"><i class="fas fa-user"></i> Chatling API</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-badge bg-info">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <h3>Fase 3: Finalización Dashboard</h3>
+                            <span class="badge bg-info">2 semanas</span>
+                        </div>
+                        <div class="timeline-content" style="text-align: justify;">
+                            <p>Finalización del dashboard de usuario y especialista (mostrando usuarios relacionados).
+                                Creación completa del centro y su funcionalidad. Implementación final de
+                                videollamadas/chat.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
+                                <span class="tech-badge"><i class="fas fa-video"></i> Jitsi Meet API</span>
+                                <span class="tech-badge"><i class="fab fa-php"></i> PHP</span>
+                                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-badge bg-warning">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <h3>Fase 4: Análisis y Mejoras</h3>
+                            <span class="badge bg-warning">2 semanas</span>
+                        </div>
+                        <div class="timeline-content">
+                            <p>Diseño de la interfaz gráfica e implementación final de la pasarela de pago Paypal y Minijuegos.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                                <span class="tech-badge"><i class="fab fa-paypal"></i> PayPal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-badge bg-danger">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <h3>Fase 5: Lanzamiento y Escalabilidad</h3>
+                            <span class="badge bg-danger">2 semanas</span>
+                        </div>
+                        <div class="timeline-content">
+                            <p>Preparación para lanzamiento público. Implementación de características de escalabilidad.
+                                Pruebas finales de estrés y seguridad. Documentación completa.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge"><i class="fas fa-cloud"></i> Escalabilidad</span>
+                                <span class="tech-badge"><i class="fas fa-shield-alt"></i> Seguridad</span>
+                                <span class="tech-badge"><i class="fas fa-file-alt"></i> Documentación</span>
+                                <span class="tech-badge"><i class="fas fa-bug"></i> Testing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Sección Tecnologías -->
+    <section id="tecnologias" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Tecnologías y Lenguajes Empleados</h2>
+                <p class="lead">Stack tecnológico que potencia nuestro proyecto</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Lenguajes de programación -->
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="h4 mb-0"><i class="fas fa-code me-2"></i> Lenguajes y Bases de Datos</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <!-- JavaScript -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                                width="40" height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">JavaScript</h5>
+                                                <p class="small text-muted mb-0">Interactividad frontend y comunicación
+                                                    con backend</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- PHP -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                                                width="40" height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">PHP</h5>
+                                                <p class="small text-muted mb-0">Lógica del backend y operaciones con BD
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- HTML5 -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                                width="40" height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">HTML5</h5>
+                                                <p class="small text-muted mb-0">Estructura del contenido web</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- CSS3 -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                                width="40" height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">CSS3</h5>
+                                                <p class="small text-muted mb-0">Estilos y diseño responsivo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- MySQL -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                                                width="40" height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">MySQL</h5>
+                                                <p class="small text-muted mb-0">Gestión de bases de datos relacionales
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- PL/SQL -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
+                                                width="40" height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">PL/SQL</h5>
+                                                <p class="small text-muted mb-0">Lenguaje procedural para Oracle</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks y herramientas -->
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h3 class="h4 mb-0"><i class="fas fa-tools me-2"></i> Frameworks y Herramientas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <!-- Bootstrap -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                                                width="40" height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">Bootstrap</h5>
+                                                <p class="small text-muted mb-0">Framework CSS para diseño responsivo
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Git -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                                                width="40" height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">Git</h5>
+                                                <p class="small text-muted mb-0">Control de versiones del proyecto</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Jitsi -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="./jitsi.png" width="40" height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">Jitsi Meet</h5>
+                                                <p class="small text-muted mb-0">Comunicación por videollamada</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- PayPal -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://www.paypalobjects.com/webstatic/icon/pp32.png" width="40"
+                                                height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">PayPal</h5>
+                                                <p class="small text-muted mb-0">Pasarela de pagos en línea</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Nginx -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg"
+                                                width="40" height="40" class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">Nginx</h5>
+                                                <p class="small text-muted mb-0">Servidor web y proxy inverso</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Brevo -->
+                                <div class="col-md-6">
+                                    <div class="tech-item p-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://www.brevo.com/favicon.ico" width="40" height="40"
+                                                class="me-3">
+                                            <div>
+                                                <h5 class="mb-1">Brevo</h5>
+                                                <p class="small text-muted mb-0">API para envío de emails</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- funcionalidades Section -->
+    <section class="section bg-light" id="funcionalidades">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="mb-3">Funciones principales</h2>
+                <p class="lead">Diseñadas para ayudarte en tu día a día</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card p-4 h-100 text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h5>Calendario emocional</h5>
+                        <p>Registra tu estado de ánimo y visualiza patrones para mejorar tu autoconocimiento.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card p-4 h-100 text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h5>Tareas inteligentes</h5>
+                        <p>Organiza tu día con alertas por prioridades y enfoque por bloques de tiempo.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card p-4 h-100 text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h5>Chat con IA</h5>
+                        <p>Recibe apoyo personalizado de nuestro asistente inteligente las 24 horas.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card p-4 h-100 text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h5>Videollamadas con profesionales</h5>
+                        <p>Conéctate fácilmente con profesionales y tu red de apoyo cuando lo necesites.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card p-4 h-100 text-center">
+                        <div class="feature-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h5>Música de Youtube</h5>
+                        <p>Relájate o concentrate con música recomendada desde Youtube.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card p-4 h-100 text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h5>Minijuegos</h5>
+                        <p>Ejercita tu mente con juegos interactivos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sección de Precios -->
+    <section id="precios" class="py-5" style="background-color: var(--light);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Planes a tu Medida</h2>
+                <p class="lead">Elige el plan que mejor se adapte a tus necesidades</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Plan Básico -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-header bg-white text-primary py-4 border-primary">
+                            <h4 class="my-0 fw-normal">Básico</h4>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title pricing-card-title">Gratuito</h2>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Calendario</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Notas</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Estado de animo</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Tareas</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Empezar ahora</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plan Premium (Destacado) -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-primary shadow-lg h-100">
+                        <div class="card-header bg-white text-primary py-4 border-primary">
+                            <h4 class="my-0 fw-normal">Premium <span
+                                    class="badge bg-warning text-dark ms-2">Popular</span></h4>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title pricing-card-title">15€<small class="text-muted fw-light">/mes</small>
+                            </h2>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Todo en Básico</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Música</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Chat de IA</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Videollamadas</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Minijuegos</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Empezar ahora</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plan Empresarial -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-header bg-white text-primary py-4 border-primary">
+                            <h4 class="my- fw-normal">Empresarial</h4>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title pricing-card-title">250€<small
+                                    class="text-muted fw-light">/año</small></h2>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Gestión de especialistas
+                                </li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Gestión de usuarios</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Ver relaciones</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Desbloqueo para anexos
+                                </li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-dark">Contactar ventas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="section py-5" style="background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);">
+        <div class="container text-center text-white" data-aos="zoom-in">
+            <h2 class="mb-4" style="color: white;">¿Listo para transformar tu rutina?</h2>
+            <p class="lead mb-5">Descarga TDA Tracker hoy y comienza tu viaje hacia una vida más organizada y enfocada.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#" class="btn btn-outline-light btn-lg px-4 py-3">
+                    <i class="fab fa-google-play me-2"></i>Descarga nuestro Apk
+                </a>
+                <a href="https://tdatracker.infy.uk/?i=1" class="btn btn-outline-light btn-lg px-4 py-3">
+                    <i class="fas fa-play-circle me-2"></i>Ver demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 text-white" style="background-color: var(--dark);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="logo.jpg" alt="Logo" width="120" class="mb-3 rounded-circle border border-3 border-white">
+                    <p>TDA Tracker - Innovando para un mundo más comprensivo y organizado.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="mb-3">Producto</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Funciones</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Precios</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="mb-3">Empresa</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Nosotros</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Carreras</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">Suscríbete</h5>
+                    <p>Recibe actualizaciones y consejos sobre TDA/TDAH.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Tu email">
+                        <button class="btn btn-primary" type="button">Enviar</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-light opacity-25">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 TDA Tracker. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar animaciones
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Efecto parallax para elementos flotantes
+        document.addEventListener('mousemove', function (e) {
+            const floatingElements = document.querySelectorAll('.floating');
+            floatingElements.forEach(el => {
+                const speed = el.getAttribute('data-speed');
+                const x = (window.innerWidth - e.pageX * speed) / 100;
+                const y = (window.innerHeight - e.pageY * speed) / 100;
+                el.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            });
+        });
+    </script>
+</body>
+
+</html>

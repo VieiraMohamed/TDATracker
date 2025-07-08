@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simón Dice</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <!-- Pantalla de configuración -->
+  <div id="config-screen" class="screen">
+    <h1>Simón Dice</h1>
+    <form id="config-form">
+      <input type="text" id="playerName" placeholder="Ingresa tu nombre" required>
+      <select id="gameMode" required>
+        <option value="colors">Colores</option>
+        <option value="numbers">Números</option>
+      </select>
+      <select id="difficulty" required>
+        <option value="easy">Fácil</option>
+        <option value="medium">Medio</option>
+        <option value="hard">Difícil</option>
+      </select>
+      <button type="submit" class="btn">Empezar</button>
+    </form>
+  </div>
+
+  <!-- Pantalla de juego -->
+  <div id="game-screen" class="screen hidden">
+    <div class="top-bar">
+      <div id="userDisplay"></div>
+      <div id="levelDisplay"></div>
+      <div id="livesDisplay"></div>
+      <div id="timerDisplay"></div>
+    </div>
+    <div id="sequence-container"></div>
+    <div id="palestra"></div>
+    <div id="music-control">
+      <button id="musicToggle" class="btn">Iniciar Música</button>
+      <!-- Control de volumen -->
+      <div class="volume-container">
+        <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
+      </div>
+    </div>
+    <button id="backToStartBtnGame" class="btn">Volver al inicio</button>
+  </div>
+
+  <!-- Pantalla de resultado -->
+  <div id="result-screen" class="screen hidden">
+    <h2 id="result-message"></h2>
+    <button id="playAgainBtn" class="btn">Jugar de nuevo</button>
+    <button id="viewRankingBtn" class="btn">Ver Ranking</button>
+  </div>
+
+  <!-- Pantalla de ranking -->
+  <div id="ranking-screen" class="screen hidden">
+    <h2>Ranking</h2>
+    <table id="ranking-table">
+      <thead>
+        <tr>
+          <th>Jugador</th>
+          <th>Nivel</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button id="backToStartBtnRanking" class="btn">Volver al Inicio</button>
+  </div>
+
+  <!-- Mensaje de pérdida de vida -->
+  <div id="lossMessage" class="hidden">¡Has perdido una vida!</div>
+
+  <audio id="background-music" loop>
+    <source src="./sonidos/background-music.mp3" type="audio/mp3">
+  </audio>
+  <audio id="correct-sound">
+    <source src="./sonidos/correct.mp3" type="audio/mp3">
+  </audio>
+  <audio id="wrong-sound">
+    <source src="./sonidos/wrong.mp3" type="audio/mp3">
+  </audio>
+
+  <script src="./JS/game.js"></script>
+  <script src="./JS/config.js"></script>
+</body>
+</html>

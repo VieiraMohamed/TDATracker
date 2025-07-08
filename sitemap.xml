@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tdatracker.infy.uk/</loc>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://tdatracker.infy.uk/html/registro_usuario.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tdatracker.infy.uk/PHP/inicio_sesion.php</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tdatracker.infy.uk/PHP/dashboard.php</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://tdatracker.infy.uk/PHP/dashboardEspecialista.php</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://tdatracker.infy.uk/PHP/dashboardCentro.php</loc>
+    <priority>0.60</priority>
+  </url>
+</urlset>
